@@ -1,6 +1,5 @@
 import exp from 'constants';
 
-
 export const usersObj = {
     '0': 'Alex',
     '1': 'Natalia',
@@ -12,7 +11,6 @@ export const usersObj = {
 users[user.id] = user// поиск user
 delete users[user.id]//удаление
 users[user.id].name = 'Victor'*/ //перезаписывание имени
-
 
 export const usersArray = [
     {id: 1, name: 'Alex'},
