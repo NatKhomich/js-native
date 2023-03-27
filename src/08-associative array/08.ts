@@ -6,6 +6,8 @@ export const usersObj = {
     '2': 'Katya'
 }
 
+
+
 //работа с ассоциативным массивом
 /*let user = {id: 100500, name: 'Igor'}//доб нового user
 users[user.id] = user// поиск user
