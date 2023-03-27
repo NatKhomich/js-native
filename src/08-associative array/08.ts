@@ -17,6 +17,5 @@ export const usersArray = [
     {id: 10111, name: 'Natalia'},
     {id: 101222, name: 'Katya'}
 ]
-
 //usersArray.find( u => u.id === 1)
 //let usersCopy = [...usersArray, user]
