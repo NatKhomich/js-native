@@ -19,13 +19,11 @@ beforeEach( () => {
 
 test('should update corresponding user', ()=> {
     users['1'].name = 'Alexander'
-
     expect(users['1'].name).toBe('Alexander')
 
 })
 
 test('should delete corresponding user', ()=> {
     delete users['1']
-
     expect(users['1']).toBeUndefined()
 })
