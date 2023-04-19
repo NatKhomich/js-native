@@ -35,7 +35,7 @@ export function moveUser(u: UserWithLaptopType, city: string) {
     }
 }
 
-export const updateUserLaptop = (user:UserWithLaptopType, title: string ) => {
+export const updateUserLaptop = (user: UserWithLaptopType, title: string) => {
     return {
         ...user, laptop: {...user.laptop, title: title}
     }
@@ -77,7 +77,10 @@ export type DataType = {
 
 export const onChangeDataAddress = (data: DataType, newTitle: string) => {
     return {
-      ...data, address: {...data.address, city: {...data.address.city, title: newTitle}}
+        ...data, address: {...data.address, city: {...data.address.city, title: newTitle}}
     }
 }
 //-----------------------------------------------------------------------
+export type UserWitchBooksType = UserType & {
+    books: string[]
+}

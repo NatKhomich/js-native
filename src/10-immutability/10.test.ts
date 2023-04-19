@@ -5,7 +5,7 @@ import {
     moveUser, onChangeDataAddress,
     onChangeLife,
     updateUserLaptop,
-    UserType,
+    UserType, UserWitchBooksType,
     UserWithLaptopType
 } from './10';
 
@@ -113,3 +113,5 @@ expect(dataAddressCopy.address.city.title).toBe('Astana')
 expect(data.address.city.title).toBe('Kursk')
 })
 //------------------------------------------------------------
+
+
