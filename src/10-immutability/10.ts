@@ -34,3 +34,50 @@ export function moveUser(u: UserWithLaptopType, city: string) {
         ...u, address: {...u.address, city: city}
     }
 }
+
+export const updateUserLaptop = (user:UserWithLaptopType, title: string ) => {
+    return {
+        ...user, laptop: {...user.laptop, title: title}
+    }
+}
+//---------------------------------------------------------------------------------
+
+export type FamilyType = {
+    citizen: {
+        name: string
+    }
+    age: number
+    dog: string
+    address: {
+        city: string
+        house: number
+    }
+}
+
+export const onChangeLife = (family: FamilyType, newCity: string) => {
+    return {
+        ...family, address: {...family.address, city: newCity}
+    }
+}
+
+export type DataType = {
+    citizen: {
+        name: string
+    }
+    age: number
+    dog: string
+    address: {
+        city: {
+            title: string
+            district: string
+            house: 83
+        }
+    }
+}
+
+export const onChangeDataAddress = (data: DataType, newTitle: string) => {
+    return {
+      ...data, address: {...data.address, city: {...data.address.city, title: newTitle}}
+    }
+}
+//-----------------------------------------------------------------------
