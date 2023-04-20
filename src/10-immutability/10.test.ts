@@ -1,13 +1,13 @@
 import {
-    addNewBooksToUser,
+    addNewBooksToUser, addUserCompany,
     DataType,
     FamilyType,
     makeHairStyle,
     moveUser, moveUsersToOtherHouse, onChangeDataAddress,
-    onChangeLife, updateBookJs,
+    onChangeLife, removeBook, updateBookJs, updateCompanyTitle,
     updateUserLaptop,
     UserType, UserWitchBooksType,
-    UserWithLaptopType
+    UserWithLaptopType, WithCompaniesType
 } from './10';
 
 
@@ -197,9 +197,58 @@ test('remove js book', () => {
         books: ['css', 'html', 'js', 'react']
     }
 
-    const newUserBooks = updateBookJs(user, 'js', 'ts')
+    const newUserBooks = removeBook(user, 'js')
 
     expect(user).not.toBe(newUserBooks)
     expect(user.books).not.toBe(newUserBooks.books)
-    expect(newUserBooks.books[2]).toBe('ts')
+    expect(newUserBooks.books.length).toBe(3)
+})
+//----------------------------------------------------
+
+test('job in company', () => {
+    let user: UserWithLaptopType & WithCompaniesType = {
+        name: 'Natalia',
+        hair: 40,
+        address: {
+            city: 'Kursk',
+            house: 83
+        },
+        laptop: {
+            title: 'MSY'
+        },
+       companies: [
+           {id: 1, title: 'Epam'},
+           {id: 2, title: 'IT-Incubator'}
+       ]
+    }
+
+    const copyUserCompany = addUserCompany(user, {id: 3, title: 'Google'})
+
+    expect(user).not.toBe(copyUserCompany)
+    expect(user.companies).not.toBe(copyUserCompany.companies)
+    expect(copyUserCompany.companies.length).toBe(3)
+})
+
+test('update to job', () => {
+    let user: UserWithLaptopType & WithCompaniesType = {
+        name: 'Natalia',
+        hair: 40,
+        address: {
+            city: 'Kursk',
+            house: 83
+        },
+        laptop: {
+            title: 'MSY'
+        },
+        companies: [
+            {id: 1, title: 'Епам'},
+            {id: 2, title: 'IT-Incubator'}
+        ]
+    }
+
+    const copyUserCompany = updateCompanyTitle(user, 1, 'EPAM')
+
+    expect(user).not.toBe(copyUserCompany)
+    expect(user.companies).not.toBe(copyUserCompany.companies)
+    expect(copyUserCompany.companies[0].title).toBe('EPAM')
 })

@@ -101,3 +101,32 @@ export const updateBookJs = (u: UserWithLaptopType & UserWitchBooksType,
                              oldBook: string,
                              newBook: string) => {
     return {...u, books: u.books.map(el => el === oldBook ? newBook : el)} }
+
+export const removeBook = (u: UserWithLaptopType & UserWitchBooksType, bookForDelete: string) => {
+    return {...u, books: u.books.filter( el => el !== bookForDelete)}
+}
+//---------------------------------------------------
+
+export type WithCompaniesType = {
+    companies: CompaniesType[]
+}
+
+type CompaniesType = {
+    id: number
+    title: string
+}
+
+export const addUserCompany = (user: UserWithLaptopType & WithCompaniesType,
+                               newCompany: CompaniesType) => {
+    return {
+        ...user, companies: [...user.companies, newCompany]
+    }
+}
+
+export const updateCompanyTitle = (user: UserWithLaptopType & WithCompaniesType,
+                                   companyId: number,
+                                   newTitle: string) => {
+    return{
+        ...user, companies: user.companies.map( el => el.id === companyId ? {...el, title: newTitle} : el )
+    }
+}
