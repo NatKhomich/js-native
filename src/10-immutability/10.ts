@@ -16,12 +16,11 @@ export type UserWithLaptopType = UserType & {
 }
 
 export function makeHairStyle(u: UserType, power: number) {
-    const copyUser = {
+   return {
         ...u,
         hair: u.hair / power
     }
     //copyUser.hair = copyUser.hair / power
-    return copyUser
 }
 
 export function moveUser(u: UserWithLaptopType, city: string) {
