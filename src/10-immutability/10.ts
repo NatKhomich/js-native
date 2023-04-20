@@ -84,3 +84,20 @@ export const onChangeDataAddress = (data: DataType, newTitle: string) => {
 export type UserWitchBooksType = UserType & {
     books: string[]
 }
+
+export const moveUsersToOtherHouse = (u: UserWithLaptopType & UserWitchBooksType, house: number) => {
+    return {
+        ...u, address: {...u.address, house: house}
+    }
+}
+
+export const addNewBooksToUser = (u: UserWithLaptopType & UserWitchBooksType, newBook: string) => {
+    return {
+        ...u, books: [...u.books, newBook]
+    }
+}
+
+export const updateBookJs = (u: UserWithLaptopType & UserWitchBooksType,
+                             oldBook: string,
+                             newBook: string) => {
+    return {...u, books: u.books.map(el => el === oldBook ? newBook : el)} }

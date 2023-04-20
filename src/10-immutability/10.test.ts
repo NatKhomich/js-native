@@ -1,9 +1,10 @@
 import {
+    addNewBooksToUser,
     DataType,
     FamilyType,
     makeHairStyle,
-    moveUser, onChangeDataAddress,
-    onChangeLife,
+    moveUser, moveUsersToOtherHouse, onChangeDataAddress,
+    onChangeLife, updateBookJs,
     updateUserLaptop,
     UserType, UserWitchBooksType,
     UserWithLaptopType
@@ -114,4 +115,91 @@ expect(data.address.city.title).toBe('Kursk')
 })
 //------------------------------------------------------------
 
+test('update ', () => {
+    let users: UserWithLaptopType & UserWitchBooksType = {
+        name: 'Natalia',
+        hair: 40,
+        address: {
+            city: 'Kursk',
+            house: 83
+        },
+        laptop: {
+            title: 'MSY'
+        },
+        books: ['css', 'html', 'js', 'react']
+    }
 
+    const copyUsers = moveUsersToOtherHouse(users, 221)
+
+    expect(users).not.toBe(copyUsers)
+    expect(users.books).toBe(copyUsers.books)
+    expect(copyUsers.laptop.title).toBe('MSY')
+    expect(users.address.house).toBe(83)
+    expect(copyUsers.address.house).toBe(221)
+
+})
+
+
+test('add new books to user', () => {
+    let user: UserWithLaptopType & UserWitchBooksType = {
+        name: 'Natalia',
+        hair: 40,
+        address: {
+            city: 'Kursk',
+            house: 83
+        },
+        laptop: {
+            title: 'MSY'
+        },
+        books: ['css', 'html', 'js', 'react']
+    }
+
+    const newUserBooks = addNewBooksToUser(user, 'ts')
+
+    expect(user).not.toBe(newUserBooks)
+    expect(user.books).not.toBe(newUserBooks.books)
+    expect(newUserBooks.books[4]).toBe('ts')
+    expect(user.books.length).toBe(4)
+})
+
+test('update js to ts', () => {
+    let user: UserWithLaptopType & UserWitchBooksType = {
+        name: 'Natalia',
+        hair: 40,
+        address: {
+            city: 'Kursk',
+            house: 83
+        },
+        laptop: {
+            title: 'MSY'
+        },
+        books: ['css', 'html', 'js', 'react']
+    }
+
+    const newUserBooks = updateBookJs(user, 'js', 'ts')
+
+    expect(user).not.toBe(newUserBooks)
+    expect(user.books).not.toBe(newUserBooks.books)
+    expect(newUserBooks.books[2]).toBe('ts')
+})
+
+test('remove js book', () => {
+    let user: UserWithLaptopType & UserWitchBooksType = {
+        name: 'Natalia',
+        hair: 40,
+        address: {
+            city: 'Kursk',
+            house: 83
+        },
+        laptop: {
+            title: 'MSY'
+        },
+        books: ['css', 'html', 'js', 'react']
+    }
+
+    const newUserBooks = updateBookJs(user, 'js', 'ts')
+
+    expect(user).not.toBe(newUserBooks)
+    expect(user.books).not.toBe(newUserBooks.books)
+    expect(newUserBooks.books[2]).toBe('ts')
+})
