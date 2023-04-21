@@ -16,7 +16,7 @@ export type UserWithLaptopType = UserType & {
 }
 
 export function makeHairStyle(u: UserType, power: number) {
-   return {
+    return {
         ...u,
         hair: u.hair / power
     }
@@ -99,10 +99,11 @@ export const addNewBooksToUser = (u: UserWithLaptopType & UserWitchBooksType, ne
 export const updateBookJs = (u: UserWithLaptopType & UserWitchBooksType,
                              oldBook: string,
                              newBook: string) => {
-    return {...u, books: u.books.map(el => el === oldBook ? newBook : el)} }
+    return {...u, books: u.books.map(el => el === oldBook ? newBook : el)}
+}
 
 export const removeBook = (u: UserWithLaptopType & UserWitchBooksType, bookForDelete: string) => {
-    return {...u, books: u.books.filter( el => el !== bookForDelete)}
+    return {...u, books: u.books.filter(el => el !== bookForDelete)}
 }
 //---------------------------------------------------
 
@@ -125,7 +126,21 @@ export const addUserCompany = (user: UserWithLaptopType & WithCompaniesType,
 export const updateCompanyTitle = (user: UserWithLaptopType & WithCompaniesType,
                                    companyId: number,
                                    newTitle: string) => {
-    return{
-        ...user, companies: user.companies.map( el => el.id === companyId ? {...el, title: newTitle} : el )
+    return {
+        ...user, companies: user.companies.map(el => el.id === companyId ? {...el, title: newTitle} : el)
     }
+}
+
+export const updateCompanyTitle2 = (companies: {[key: string]: CompaniesType[]},
+                                    userName: string,
+                                    companyID: number,
+                                    newTitle: string) => {
+
+    let companyCopy = {...companies}
+    companyCopy[userName] = companyCopy[userName].map( el => el.id === companyID
+        ? {...el, title: newTitle}
+        : el )
+
+    return companyCopy
+
 }

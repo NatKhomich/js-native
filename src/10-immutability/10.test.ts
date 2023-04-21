@@ -4,7 +4,7 @@ import {
     FamilyType,
     makeHairStyle,
     moveUser, moveUsersToOtherHouse, onChangeDataAddress,
-    onChangeLife, removeBook, updateBookJs, updateCompanyTitle,
+    onChangeLife, removeBook, updateBookJs, updateCompanyTitle, updateCompanyTitle2,
     updateUserLaptop,
     UserType, UserWitchBooksType,
     UserWithLaptopType, WithCompaniesType
@@ -108,10 +108,10 @@ test('on change place life', () => {
     }
 
 
-const dataAddressCopy = onChangeDataAddress(data, 'Astana')
+    const dataAddressCopy = onChangeDataAddress(data, 'Astana')
 
-expect(dataAddressCopy.address.city.title).toBe('Astana')
-expect(data.address.city.title).toBe('Kursk')
+    expect(dataAddressCopy.address.city.title).toBe('Astana')
+    expect(data.address.city.title).toBe('Kursk')
 })
 //------------------------------------------------------------
 
@@ -216,10 +216,10 @@ test('job in company', () => {
         laptop: {
             title: 'MSY'
         },
-       companies: [
-           {id: 1, title: 'Epam'},
-           {id: 2, title: 'IT-Incubator'}
-       ]
+        companies: [
+            {id: 1, title: 'Epam'},
+            {id: 2, title: 'IT-Incubator'}
+        ]
     }
 
     const copyUserCompany = addUserCompany(user, {id: 3, title: 'Google'})
@@ -251,4 +251,34 @@ test('update to job', () => {
     expect(user).not.toBe(copyUserCompany)
     expect(user.companies).not.toBe(copyUserCompany.companies)
     expect(copyUserCompany.companies[0].title).toBe('EPAM')
+})
+
+test('update company', () => {
+    let user: UserWithLaptopType = {
+        name: 'Natalia',
+        hair: 40,
+        address: {
+            city: 'Kursk',
+            house: 83
+        },
+        laptop: {
+            title: 'MSY'
+        }
+    }
+    let companies = {
+        'Natalia': [{id: 1, title: 'Епам'},
+            {id: 2, title: 'IT-Incubator'}],
+        'Alex': [{id: 1, title: 'IT-Incubator'}]
+    }
+
+    const companyCopy = updateCompanyTitle2(companies,
+        'Natalia',
+        1,
+        'EPAM')
+
+    expect(companies).not.toBe(companyCopy)
+    expect(companies['Natalia']).not.toBe(companyCopy)
+    expect(companies['Alex']).toBe(companyCopy['Alex'])
+    expect(companyCopy['Natalia'][0].title).toBe('EPAM')
+
 })
