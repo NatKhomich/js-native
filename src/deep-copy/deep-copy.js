@@ -13,7 +13,7 @@ let manFullCopy = {
 // 2. Array of primitives
 let numbers = [1, 2, 3];
 
-let numbersFullCopy = [...numbers]  //  your code
+let numbersFullCopy = [...numbers] //  your code
 
 
 // 3. Object inside an object
@@ -42,7 +42,7 @@ let man2 = {
 };
 
 let man2FullCopy = {
-    ...man2,
+...man,
     friends: [...man2.friends]
 }  // your code
 
@@ -53,7 +53,6 @@ let people = [
     {name: "Steven", age: 32},
     {name: "William", age: 28}
 ];
-
 
 let peopleFullCopy = people.map( el => ({...el}) ) // your code
 
@@ -71,7 +70,7 @@ let man3 = {
 
 let man3FullCopy = {
     ...man3,
-    friends: man3.friends.map( el => ({...el}) )
+    friends: man3.friends.map( el => ( { ...el } ) )
 } //  your code
 
 
@@ -90,14 +89,15 @@ let man4 = {
 };
 
 let man4FullCopy = {
-    ...man4,
+...man4,
     mother: {
-        ...man4.mother,
+    ...man4.mother,
         work: {
-            ...man4.mother.work
+        ...man4.mother.work
         }
     }
 } //  your code
+
 
 // 8 Array of objects inside object -> object
 let man5 = {
@@ -118,13 +118,13 @@ let man5 = {
 };
 
 let man5FullCopy = {
-    ...man5,
+...man5,
     mother: {
-        ...man5.mother,
+    ...man5.mother,
         work: {
-            ...man5.mother.work
+        ...man5.mother.work
         },
-        parents: man5.mother.parents.map( el => ({...el}) )
+        parents: man5.mother.parents.map( el => ( {...el} ) )
     }
 
 } //  your code
@@ -161,18 +161,13 @@ let man6 = {
 };
 
 let man6FullCopy = {
-    ...man6,
+...man6,
     mother: {
-        ...man6.mother,
+    ...man6.mother,
         work: {
-            ...man6.mother.work
+        ...man6.mother.work
         },
-        parents: man6.mother.parents.map( el => {
-            return {
-                ...el,
-                favoriteDish: {...el.favoriteDish}
-            }
-        } )
+        parents: man6.mother.parents.map( el => ( {...el, favoriteDish: {...el.favoriteDish}} ))
     }
 }  //  your code
 
@@ -217,20 +212,14 @@ let man7 = {
 };
 
 let man7FullCopy = {
-    ...man7,
+...man7,
     mother: {
-        ...man7.mother,
+    ...man7.mother,
         work: {
-            ...man7.mother.work
+        ...man7.mother.work
         },
-        parents: man7.mother.parents.map( el => {
-            return {
-                ...el,
-                favoriteDish: {
-                    ...el.favoriteDish,
-                    ingredients: el.favoriteDish.ingredients.map( i => ({...i}) )
-                }
-            }
-        } )
+        parents: man7.mother.parents.map( el => ( {...el, favoriteDish:
+                {...el.favoriteDish, ingredients:
+                        el.favoriteDish.ingredients.map( i => ({...i}) )}}))
     }
 }  //  your code

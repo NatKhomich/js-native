@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {LessonType} from './destructuring.test';
 
 
@@ -20,7 +20,7 @@ type ManComponentsType = {
     car: {model: string}
 }
 
-export const ManComponents: React.FC<ManComponentsType> = ( {title, man, ...props}) => {
+const ManComponents: React.FC<ManComponentsType> = ( {title, man, ...props}) => {
     //title и man основные свойства, а к остаточным обращаемся через props
 
    //const { title, man, ...restProps } = props //или так
