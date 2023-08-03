@@ -54,7 +54,7 @@ let people = [
     {name: "William", age: 28}
 ];
 
-let peopleFullCopy = people.map( el => ({...el}) ) // your code
+let peopleFullCopy = people.map( el => ({...el})) // your code
 
 
 // 6 Array of objects inside object
@@ -70,7 +70,7 @@ let man3 = {
 
 let man3FullCopy = {
     ...man3,
-    friends: man3.friends.map( el => ( { ...el } ) )
+    friends: man3.friends.map( el => ( { ...el }))
 } //  your code
 
 
@@ -124,7 +124,7 @@ let man5FullCopy = {
         work: {
         ...man5.mother.work
         },
-        parents: man5.mother.parents.map( el => ( {...el} ) )
+        parents: man5.mother.parents.map( el => ( {...el} ))
     }
 
 } //  your code

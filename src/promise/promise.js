@@ -10,12 +10,12 @@
 //.then - когда обещание выполнится вызови функцию
 //когда запрос на сервер отправлен состояние pending
 
-const axios = {}
+/*const axios = {}
 const promise1 = axios.get('https://google.com')
 promise1
     .then( () => { } )
     .catch( () => { } )
-console.log(promise1)
+console.log(promise1)*/
 
 //если результат получен resolved, выполняется then
 //если результат rejected (ошибка, данные не найдены и тд) - resolved никогда не выполнится
