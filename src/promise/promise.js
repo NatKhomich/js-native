@@ -81,37 +81,61 @@ console.log(promise1)
 // }
 // run()
 
+//-----------------------------------------------------------------------------------------------------
+// let axios = {
+//     get() {
+//         return new Promise((res, rej) => {
+//             setTimeout(() => {
+//                 res({
+//                     g: 2,
+//                     g3: 4,
+//                     message: 'data'
+//                 })
+//                 rej('error')
+//             }, 3000)
+//         })
+//     }
+// }
+//
+// axios.get()
+//     .then(res => {
+//         console.log(res)
+//         return res
+//     })
+//     .then(data => {
+//         console.log(data.message)
+//     })
+//     .then(data => {
+//         console.log(data)
+//     })
+//     .then(data => {
+//         console.log(data)
+//     })
+//     .catch(e => {
+//         console.log(e)
+//     })
 
 
-let axios = {
-    get() {
-        return new Promise((res, rej) => {
-            setTimeout(() => {
-                res({
-                    g: 2,
-                    g3: 4,
-                    message: 'data'
-                })
-                rej('error')
-            }, 3000)
-        })
-    }
-}
+// let myPromise = new Promise((res, rej) => {
+//     res(Math.random())
+// })
+//
+// myPromise.then((num) => {
+//     console.log("myPromise зарезолвился, и я узнал об этом " + num)
+// })
+// myPromise.then((num) => {
+//     console.log("myPromise зарезолвился, и я узнал об этом " + num)
+// })
 
-axios.get()
-    .then(res => {
-        console.log(res)
-        return res
-    })
-    .then(data => {
-        console.log(data.message)
-    })
-    .then(data => {
-        console.log(data)
-    })
-    .then(data => {
-        console.log(data)
-    })
-    .catch(e => {
-        console.log(e)
-    })
+
+// const doAfter = (sec) => {
+//     return new Promise((res, rej) => {
+//         setTimeout(() => {
+//             rej()
+//         }, sec * 1000)
+//     })
+// }
+//
+// doAfter(5).then(() => console.log('я сработал через 5 секунд'))
+// doAfter(3).then(() => console.log('а я сработал через 3 секунд'))
+// doAfter(10).then(() => console.log('я сработал через 10 секунд'))
