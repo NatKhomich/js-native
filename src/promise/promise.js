@@ -23,8 +23,8 @@ console.log(promise1)
 //применяем метод all и в параметры передаем оба промиса и также через then catch работаем с ним
 //const otherPromise = Promise.all([promise1, promise2])
 //otherPromise
-    //.then(() => {}) - выполняем что нужно
-    //.catch(() => {}) - ловим ошибку
+//.then(() => {}) - выполняем что нужно
+//.catch(() => {}) - ловим ошибку
 
 //метод .all сработает, только когда оба промиса будут fulfilled !!!
 //если хотя бы один промис не зарезолвится Promise.all зареджектится (будет ошибка)
@@ -44,9 +44,8 @@ console.log(promise1)
 //каждый вызов then возвращает новый промис !!!
 
 //findUserInDB(1) - получи из базы данных пользователя c id 1
-    //.then(user => user.name) - когда промис зарезолвится мы получим имя юзера (новый промис)
-    //.then(name => console.log(name)) - когда промис зарезолвится мы получим имя юзера в консоли (новый промис)
-
+//.then(user => user.name) - когда промис зарезолвится мы получим имя юзера (новый промис)
+//.then(name => console.log(name)) - когда промис зарезолвится мы получим имя юзера в консоли (новый промис)
 
 
 //async await
@@ -55,10 +54,10 @@ console.log(promise1)
 //let user = await findUserInDB(1) в переменную попадет то чем зарезолвился промис
 
 //async function run() {
-    //let user = await findUserInDB(1)
-    //console.log(user)
-    //let friend = await findUserInDB(user.friend)
-    //console.log(friend)
+//let user = await findUserInDB(1)
+//console.log(user)
+//let friend = await findUserInDB(user.friend)
+//console.log(friend)
 //}
 //run()
 
@@ -81,3 +80,38 @@ console.log(promise1)
 //     console.log(3)
 // }
 // run()
+
+
+
+let axios = {
+    get() {
+        return new Promise((res, rej) => {
+            setTimeout(() => {
+                res({
+                    g: 2,
+                    g3: 4,
+                    message: 'data'
+                })
+                rej('error')
+            }, 3000)
+        })
+    }
+}
+
+axios.get()
+    .then(res => {
+        console.log(res)
+        return res
+    })
+    .then(data => {
+        console.log(data.message)
+    })
+    .then(data => {
+        console.log(data)
+    })
+    .then(data => {
+        console.log(data)
+    })
+    .catch(e => {
+        console.log(e)
+    })
